@@ -1,0 +1,100 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Ku",
+	"patterns": [
+		{
+			"include": "#captures"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#constants"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.lang.ku",
+				"match": "\\b(pub|static|fun|let|var|use|struct|type) "
+			},{
+				"name": "keyword.control.ku",
+				"match": "\\b(if|esle|for|in|return) "
+			},
+			{
+				"name": "keyword.types.ku",
+				"match": "\\b(int|bool|float|double|i8|i16|i32|i64|u8|u16|u32|u64|f32|f64|f128) "
+			},
+			{
+				"name": "keyword.operator.ku",
+				"match": "\\b(\\+|\\-|\\*|/|<=|>=|!=|<|>|@=|@|=|\\^|len|empty\\?|firstof|tailof|headof|nil\\?|assert|toNumber|toString|and|or|mod|hasfield) "
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.ku",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.ku",
+					"match": "\\\\."
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"match": "[a-zA-Z_][a-zA-Z0-9_\\-\\?']*",
+					"name": "variable.other.ku"
+				},
+				{
+					"match": "(nil)(?=(\\s|\\)|\\]|\\}))",
+					"name": "constant.language.nil.ku"
+				},
+				{
+					"match": "(true|false)",
+					"name": "constant.language.boolean.ku"
+				},
+				{
+					"match": "(-?\\d+/\\d+)",
+					"name": "constant.numeric.ratio.ku"
+				},
+				{
+					"match": "(-?\\d+N)",
+					"name": "constant.numeric.bigint.ku"
+				},
+				{
+					"match": "(-?\\d+)",
+					"name": "constant.numeric.long.ku"
+				}
+			]
+		},
+		"comments": {
+			"begin": "//",
+			"patterns": [
+				{
+					"name": "comment.line.content.ku",
+					"match": ".*"
+				}
+			],
+			"end": "$",
+			"name": "comment.line.ku"
+		},
+		"captures": {
+			"patterns": [{
+				"name": "variable.parameter.ku",
+				"match": "&[a-zA-Z_][a-zA-Z0-9_\\-\\?']*"
+			}]
+		}
+	},
+	"scopeName": "source.ku"
+}
