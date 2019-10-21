@@ -23,21 +23,24 @@
 	],
 	"repository": {
 		"keywords": {
-			"patterns": [{
-				"name": "keyword.lang.ku",
-				"match": "\\b(pub|static|fun|let|var|use|struct|type) "
-			},{
-				"name": "keyword.control.ku",
-				"match": "\\b(if|esle|for|in|return) "
-			},
-			{
-				"name": "keyword.types.ku",
-				"match": "\\b(int|bool|float|double|i8|i16|i32|i64|u8|u16|u32|u64|f32|f64|f128) "
-			},
-			{
-				"name": "keyword.operator.ku",
-				"match": "\\b(\\+|\\-|\\*|/|<=|>=|!=|<|>|@=|@|=|\\^|len|empty\\?|firstof|tailof|headof|nil\\?|assert|toNumber|toString|and|or|mod|hasfield) "
-			}]
+			"patterns": [
+				{
+					"name": "keyword.lang.ku",
+					"match": "\\b(pub|static|fun|let|var|use|struct|type) "
+				},
+				{
+					"name": "keyword.control.ku",
+					"match": "\\b(if|esle|for|in|return) "
+				},
+				{
+					"name": "keyword.types.ku",
+					"match": "\\b(int|bool|float|double|i8|i16|i32|i64|u8|u16|u32|u64|f32|f64|f128) "
+				},
+				{
+					"name": "keyword.operator.ku",
+					"match": "\\b(\\+|\\-|\\*|/|<=|>=|!=|<|>|@=|@|=|\\^|len|empty\\?|firstof|tailof|headof|nil\\?|assert|toNumber|toString|and|or|mod|hasfield) "
+				}
+			]
 		},
 		"strings": {
 			"name": "string.quoted.double.ku",
@@ -79,21 +82,32 @@
 			]
 		},
 		"comments": {
-			"begin": "//",
 			"patterns": [
 				{
-					"name": "comment.line.content.ku",
-					"match": ".*"
+					"begin": "//",
+					"patterns": [
+						{
+							"name": "comment.line.content.ku",
+							"match": ".*"
+						}
+					],
+					"end": "$",
+					"name": "comment.line.ku"
+				},
+				{
+					"begin": "/\\*",
+					"end": "\\*/",
+					"name": "comment.multiline.ku"
 				}
-			],
-			"end": "$",
-			"name": "comment.line.ku"
+			]
 		},
 		"captures": {
-			"patterns": [{
-				"name": "variable.parameter.ku",
-				"match": "&[a-zA-Z_][a-zA-Z0-9_\\-\\?']*"
-			}]
+			"patterns": [
+				{
+					"name": "variable.parameter.ku",
+					"match": "&[a-zA-Z_][a-zA-Z0-9_\\-\\?']*"
+				}
+			]
 		}
 	},
 	"scopeName": "source.ku"
